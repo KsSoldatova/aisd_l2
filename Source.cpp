@@ -1,145 +1,9 @@
-
 #include <iostream>
 #include <cstdlib>
 #include <math.h>
 #include <conio.h>
 #include <complex>
 using namespace std;
-
-//
-//template<class C>
-//class Complex {
-//private:
-//	struct PointsC
-//	{
-//		C reX = 0, imX = 0, reY = 0, imY = 0;
-//	};
-//	PointsC* line = NULL;
-//	int size = 0, more_number = 0;
-//public:
-//	Complex<C>(int size = 0)
-//	{
-//		if (size == 0)
-//		{
-//			this->size = size;
-//			return;
-//		}
-//		more_number = size * 2;
-//		line = new PointsC[more_number];
-//		this->size = size;
-//	}
-//	int Get_size() const { return size; }
-//	int Get_more_points() const { return more_number; }
-//	Complex operator +(Complex& other) //сложение двух линий
-//	{
-//		if (this->size + other.Get_size() >= this->more_number)
-//		{
-//			this->more_number = (this->Get_more_points() + other.Get_size());
-//			Complex* tmpline = new Complex[this->Get_more_points()];
-//			tmpline = this;
-//			*this = *tmpline;
-//		}
-//		for (int i = 0, j = this->size; i < other.Get_size(); i++, j++)
-//		{
-//			this->line[j] = other[i];
-//		}
-//		this->size += other.Get_size();
-//		return *this;
-//	}
-//
-//	Complex operator +(PointsC& point)// сложение линии и точки, добавление точки в конец
-//	{
-//		this->size++;
-//		if (this->Get_size() == this->Get_more_points())
-//		{
-//			this->more_number *= 2;
-//			Complex* tmpline = new Complex[this->Get_more_points()];
-//			tmpline = this;
-//			*this = *tmpline;
-//		}
-//		(*this)[this->Get_size() - 1] = point;
-//		return *this;
-//	}
-//
-//	friend Complex operator +(PointsC& point, Complex& tmp_line)//сложение точки и линии, добавление точки в начало
-//	{
-//		tmp_line.size++;
-//		if (tmp_line.Get_size() == tmp_line.Get_more_points())
-//		{
-//			tmp_line.more_number *= 2;
-//			Complex* tline = new Complex[tmp_line.Get_more_points()];
-//			tline = &tmp_line;
-//			tmp_line = *tline;
-//		}
-//		for (int i = tmp_line.Get_size() - 1; i != 0; i--)
-//		{
-//			tmp_line[i] = tmp_line[i - 1];
-//		}
-//		tmp_line[0] = point;
-//		return tmp_line;
-//	}
-//	PointsC operator [] (int other_point) const //для чтения
-//	{
-//		if (other_point >= 0 && other_point < size)
-//			return (line[other_point]);
-//		throw "!invalid index!";
-//	}
-//	PointsC& operator [] (int other_point) //для записи
-//	{
-//		if (other_point >= 0 && other_point < size)
-//			return (line[other_point]);
-//		throw "!invalid index!";
-//	}
-//
-//	friend ostream& operator<<(ostream& out, Complex& a)
-//	{
-//		for (int i = 0; i < a.Get_size(); i++)
-//		{
-//			out << "[" << i + 1 << "]" << "(" << "(" << a[i].reX << ";" << a[i].imX << ")" << "," << "(" << a[i].reY << ";" << a[i].imY << ")" << ")" << endl;
-//
-//		}
-//		return out;
-//	}
-//	Complex operator=(const Complex& other)
-//	{
-//		for (int i = 0; i < other.Get_size(); i++)
-//		{
-//			(*this)[i].reX = other[i].reX;
-//			(*this)[i].reY = other[i].reY;
-//			(*this)[i].imX = other[i].imX;
-//			(*this)[i].imY = other[i].imY;
-//		}
-//		return *this;
-//	}
-//
-//	bool operator == (const Complex& other)
-//	{
-//		if (this->Get_size() == other.Get_size())
-//		{
-//			for (int i = 0; i < this->Get_size(); i++)
-//			{
-//				if ((*this)[i].reX != other[i].reX || (*this)[i].reY != other[i].reY || (*this)[i].imX != other[i].imX || (*this)[i].imY != other[i].imY)
-//					return false;
-//			}
-//			return true;
-//		}
-//		return false;
-//	}
-//	bool operator != (const Complex& other)
-//	{
-//		if (this->Get_size() == other.Get_size())
-//		{
-//			for (int i = 0; i < this->Get_size(); i++)
-//			{
-//				if ((*this)[i].reX != other[i].reX || (*this)[i].reY != other[i].reY || (*this)[i].imX != other[i].imX || (*this)[i].imY != other[i].imY)
-//					return true;
-//			}
-//			return false;
-//		}
-//		return true;
-//	}
-//
-//};
 
 
 template <typename T>
@@ -178,6 +42,7 @@ public:
 		}
 		return os;
 	}
+	
 
 	Points operator [] (int other_point) const //для чтения
 	{
@@ -274,10 +139,31 @@ public:
 		}
 		return true;
 	}
-
-
 };
-
+//template <class T>
+//std::ostream& Broken_Line<std::complex<float>>::operator >> (std::ostream& os, const Broken_Line<std::complex<float>>point)
+//{
+//	for (int i = 0; i < point.Get_size(); i++)
+//	{
+//		os >> point[i].x.real();
+//		os >> point[i].x.imag();
+//		os >> point[i].y.real();
+//		os >> point[i].y.imag();
+//	}
+//	return os;
+//}
+//template <class T>
+//std::ostream& operator >> (std::ostream& os, const Broken_Line<std::complex<double>>point)
+//{
+//	for (int i = 0; i < point.Get_size(); i++)
+//	{
+//		os >> point[i].x.real();
+//		os >> point[i].x.imag();
+//		os >> point[i].y.real();
+//		os >> point[i].y.imag();
+//	}
+//	return os;
+//}
 template <class T>
 Broken_Line<std::complex<float>> operator +(Broken_Line<std::complex<float>>& other) //сложение двух линий
 {
@@ -296,50 +182,6 @@ Broken_Line<std::complex<float>> operator +(Broken_Line<std::complex<float>>& ot
 	return *this;
 }
 
-template <class T>
-Broken_Line<std::complex<float>>::Points operator [] (int other_point)//для чтения
-{
-	if (other_point >= 0 && other_point < size)
-		return (line[other_point]);
-	throw "!invalid index!";
-}
-
-template <class T>
-Broken_Line<std::complex<float>>::Points& operator [] (int other_point) //для записи
-{
-	if (other_point >= 0 && other_point < size)
-		return (line[other_point]);
-	throw "!invalid index!";
-}
-
-template <class T>
-bool operator == (const Broken_Line<std::complex<float>>& first_line, const Broken_Line<std::complex<float>>& second_line)
-{
-	if (second_line.Get_size() == first_line.Get_size())
-	{
-		for (int i = 0; i < second_line.Get_size(); i++)
-		{
-			if (second_line[i].x != first_line[i].x || second_line[i].y != first_line[i].y)
-				return false;
-		}
-		return true;
-	}
-	return false;
-}
-template <class T>
-bool operator == (const Broken_Line<std::complex<double>>& first_line, const Broken_Line<std::complex<double>>& second_line)
-{
-	if (second_line.Get_size() == first_line.Get_size())
-	{
-		for (int i = 0; i < second_line.Get_size(); i++)
-		{
-			if (second_line[i].x != first_line[i].x || second_line[i].y != first_line[i].y)
-				return false;
-		}
-		return true;
-	}
-	return false;
-}
 
 template <class T>
 Broken_Line<T> CreatingLine(Broken_Line<T>& start_line) {
@@ -357,8 +199,8 @@ Broken_Line<T> CreatingLine(Broken_Line<T>& start_line) {
 	return start_line;
 }
 template <class T>
-Broken_Line<std::complex<float>> CreatingLine(Broken_Line<std::complex<float>>& start_line) {
-	complex<float> x = 0, y = 0;
+Broken_Line<std::complex<T>> CreatingLine(Broken_Line<std::complex<T>>& start_line) {
+	complex<T> x = 0, y = 0;
 	for (int i = 0; i < start_line.Get_size(); i++)
 	{
 		cout << endl << "Enter the coordinates of the point:" << endl;
@@ -371,21 +213,21 @@ Broken_Line<std::complex<float>> CreatingLine(Broken_Line<std::complex<float>>& 
 	}
 	return start_line;
 }
-template <class T>
-Broken_Line<std::complex<double>> CreatingLine(Broken_Line<std::complex<double>>& start_line) {
-	complex<double> x = 0, y = 0;
-	for (int i = 0; i < start_line.Get_size(); i++)
-	{
-		cout << endl << "Enter the coordinates of the point:" << endl;
-		cout << "x: ";
-		cin >> x;
-		cout << "y: ";
-		cin >> y;
-		start_line[i].x = x;
-		start_line[i].y = y;
-	}
-	return start_line;
-}
+//template <class T>
+//Broken_Line<std::complex<double>> CreatingLine(Broken_Line<std::complex<double>>& start_line) {
+//	complex<double> x = 0, y = 0;
+//	for (int i = 0; i < start_line.Get_size(); i++)
+//	{
+//		cout << endl << "Enter the coordinates of the point:" << endl;
+//		cout << "x: ";
+//		cin >> x;
+//		cout << "y: ";
+//		cin >> y;
+//		start_line[i].x = x;
+//		start_line[i].y = y;
+//	}
+//	return start_line;
+//}
 
 template <class T>
 int IndexPoint(Broken_Line<T>& start_line, bool flag)
@@ -488,9 +330,9 @@ int IndexPoint(Broken_Line<std::complex<float>>& start_line, bool flag)
 		if (choice == 2)
 		{
 			complex<float> x = 0, y = 0;
-			cout << "real part of x: ";
+			cout << "x: ";
 			cin >> x;
-			cout << "real part of y: ";
+			cout << "y: ";
 			cin >> y;
 			start_line[index - 1].x = x;
 			start_line[index - 1].y = y;
@@ -547,12 +389,8 @@ int IndexPoint(Broken_Line<std::complex<double>>& start_line, bool flag)
 			complex<double> x = 0, y = 0;
 			cout << "x: ";
 			cin >> x;
-			//cout << "imag part of x: ";
-			//cin >> x.imag();
 			cout << "y: ";
 			cin >> y;
-			//cout << "imag part of y: ";
-			//cin >> y.imag();
 			start_line[index - 1].x = x;
 			start_line[index - 1].y = y;
 			std::cout << start_line << endl;
@@ -648,7 +486,7 @@ int SumLine(Broken_Line<std::complex<float>>& start_line, bool flag)
 			std::cout << endl << "Try again" << endl;
 		}
 		Broken_Line<complex<float>> tmp_line(n);
-		complex<float> new_line = CreatingLine(tmp_line);
+		Broken_Line<complex<float>>new_line = CreatingLine(tmp_line);
 		flag1 = false;
 		std::cout << "Point coordinates of the second broken line" << endl;
 		cout << new_line;
@@ -696,7 +534,7 @@ int SumLine(Broken_Line<std::complex<double>>& start_line, bool flag)
 			std::cout << endl << "Try again" << endl;
 		}
 		Broken_Line<complex<double>> tmp_line(n);
-		complex<double> new_line = CreatingLine(tmp_line);
+		Broken_Line<complex<double>> new_line = CreatingLine(tmp_line);
 		flag1 = false;
 		std::cout << "Point coordinates of the second broken line" << endl;
 		cout << new_line;
@@ -742,16 +580,12 @@ int SumPoint_Line(Broken_Line<std::complex<float>>& start_line, bool flag)
 		std::cout << "Press coordinates of the point which want to add: " << endl;
 		cout << "x: ";
 		cin >> x;
-		//cout << "imag part of x: ";
-		//cin >> x.imag();
 		cout << "y: ";
 		cin >> y;
-		//cout << "imag part of y: ";
-		//cin >> y.imag();
-		complex<float> point(1);
+		Broken_Line<complex<float>> point(1);
 		point[0].x = x;
-		point[0].imY = y;
-		complex<float> tmp_line = point[0] + start_line;
+		point[0].y = y;
+		Broken_Line<complex<float>> tmp_line = point[0] + start_line;
 		cout << tmp_line;
 		start_line = tmp_line;
 		flag = true;
@@ -769,16 +603,12 @@ int SumPoint_Line(Broken_Line<std::complex<double>>& start_line, bool flag)
 		std::cout << "Press coordinates of the point which want to add: " << endl;
 		cout << "x: ";
 		cin >> x;
-		//cout << "imag part of x: ";
-		//cin >> x.imag();
 		cout << "y: ";
 		cin >> y;
-		//cout << "imag part of y: ";
-		//cin >> y.imag();
-		complex<float> point(1);
+		Broken_Line<complex<double>> point(1);
 		point[0].x = x;
-		point[0].imY = y;
-		complex<float> tmp_line = point[0] + start_line;
+		point[0].y = y;
+		Broken_Line<complex<double>> tmp_line = point[0] + start_line;
 		cout << tmp_line;
 		start_line = tmp_line;
 		flag = true;
@@ -822,10 +652,10 @@ int SumLine_Point(Broken_Line<std::complex<float>>& start_line, bool flag)
 		cin >> x;
 		cout << "y: ";
 		cin >> y;
-		complex<float> point(1);
+		Broken_Line<std::complex<float>> point(1);
 		point[0].x = x;
 		point[0].y = y;
-		complex<float> tmp_line = start_line + point[0];
+		Broken_Line<complex<float>> tmp_line = start_line + point[0];
 		start_line = tmp_line;
 		cout << tmp_line;
 		flag = true;
@@ -843,16 +673,12 @@ int SumLine_Point(Broken_Line<std::complex<double>>& start_line, bool flag)
 		std::cout << "Press coordinates of the point which want to add: " << endl;
 		cout << "x: ";
 		cin >> x;
-	/*	cout << "imag part of x: ";
-		cin >> x.imag();*/
 		cout << "y: ";
 		cin >> y;
-		/*cout << "imag part of y: ";
-		cin >> y.imag();*/
-		complex<double> point(1);
+		Broken_Line<complex<double>> point(1);
 		point[0].x = x;
 		point[0].y = y;
-		complex<double> tmp_line = start_line + point[0];
+		Broken_Line<complex<double>> tmp_line = start_line + point[0];
 		start_line = tmp_line;
 		cout << tmp_line;
 		flag = true;
@@ -1005,7 +831,7 @@ int Compare(Broken_Line<std::complex<float>>& start_line)
 		}
 
 		Broken_Line<complex<float>> tmp_line(n);
-		complex<float> new_line = CreatingLine(tmp_line);
+		Broken_Line<complex<float>> new_line = CreatingLine(tmp_line);
 		flag1 = false;
 		cout << new_line;
 		if (start_line == new_line) cout << "The broken lines are equal!" << endl;
@@ -1053,9 +879,8 @@ int Compare(Broken_Line<std::complex<double>>& start_line)
 			std::cout << ex << endl;
 			std::cout << endl << "Try again" << endl;
 		}
-
 		Broken_Line<complex<double>> tmp_line(n);
-		complex<double> new_line = CreatingLine(tmp_line);
+		Broken_Line<complex<double>> new_line = CreatingLine(tmp_line);
 		flag1 = false;
 		cout << new_line;
 		if (start_line == new_line) cout << "The broken lines are equal!" << endl;
@@ -1090,14 +915,16 @@ void menu1()
 template <class T>
 void CreateLetter(T x, T y, Broken_Line<T>& line)
 {
+	T tmp = 2;
+	T tmp1 = 4;
 	line[0].x = x;
 	line[0].y = y;
-	line[1].x = x - 2;
+	line[1].x = x - tmp;
 	line[1].y = y;
-	line[2].x = x - 2;
-	line[2].y = y + 4;
+	line[2].x = x - tmp;
+	line[2].y = y + tmp1;
 	line[3].x = x;
-	line[3].y = y + 4;
+	line[3].y = y + tmp1;
 	cout << line;
 }
 template <class T>
@@ -1162,12 +989,8 @@ Broken_Line <std::complex<float>>& MyLetterCF(bool flag)
 	std::cout << "Press coordinaes of the first point" << endl;
 	cout << "x: ";
 	cin >> x;
-	/*cout << "imag part of x: ";
-	cin >> x.imag();*/
 	cout << "y: ";
 	cin >> y;
-	/*cout << "imag part of y: ";
-	cin >> y.imag();*/
 	CreateLetter(x, y, line);
 	return line;
 }
@@ -1182,12 +1005,8 @@ Broken_Line <std::complex<double>>& MyLetterCD(bool flag)
 	std::cout << "Press coordinaes of the first point" << endl;
 	cout << "x: ";
 	cin >> x;
-	/*cout << "imag part of x: ";
-	cin >> x.imag();*/
 	cout << "y: ";
 	cin >> y;
-	/*cout << "imag part of y: ";
-	cin >> y.imag();*/
 	CreateLetter(x, y, line);
 	return line;
 }
@@ -1345,14 +1164,12 @@ int main()
 			cout << "Press 4 to work with complex float" << endl;
 			cout << "Press 5 to work with complex double" << endl;
 			cout << "Press 6 to exit the program" << endl;
-			int type;
 			cin >> type;
 			flag = true;
 			flag1 = true;
 
 			if (type == 1) {
 				Broken_Line<int> tmp_line(n);
-
 				Broken_Line<int> start_line = CreatingLine<int>(tmp_line);
 				while (flag1)
 					flag1 = JobWithLine(flag, flag1, choice, start_line);
@@ -1430,15 +1247,12 @@ int main()
 					flag1 = JobWithLine<std::complex<float>>(flag, flag1, choice, line);
 				break;
 			}
-
 			else if (type == 5) {
 				Broken_Line<std::complex<double>> line = MyLetterCD<std::complex<double>>(flag);
 				while (flag1)
 					flag1 = JobWithLine<std::complex<double>>(flag, flag1, choice, line);
 				break;
-
 			}
-
 		}
 		case 3:
 		{
@@ -1457,10 +1271,3 @@ int main()
 		}
 	}
 }
-
-
-//template class complex<float>;
-//template class complex<double>;
-//template class Broken_Line <int>;
-//template class Broken_Line<float>;
-//template class Broken_Line<double>;
